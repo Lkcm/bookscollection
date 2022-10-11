@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { collection, doc, setDoc, addDoc } from "firebase/firestore"
 import * as Dialog from '@radix-ui/react-dialog'
 import { AddBook } from '../components/AddBook'
 import { ListItem } from '../components/ListItem';
 import * as Photos from '../services/books'
+import { db } from '../libs/firebase'
 
 
 
@@ -25,7 +27,7 @@ export default function Home() {
   }, [])
 
 
-  const handleAddTask = () => {
+  const handleAddTask = async() => {
     let newList = [...list];
     newList.push({
       id: list.lenght + 1,
@@ -34,6 +36,14 @@ export default function Home() {
 
     });
     setList(newList);
+
+    const res = await addDoc(collection(db, "cities"), {
+        name: inputTitle,
+        state: "CA",
+        country: "USA"
+    })
+
+    console.log(res)
   }
 
 
