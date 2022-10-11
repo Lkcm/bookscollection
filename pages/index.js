@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, doc, setDoc, addDoc } from "firebase/firestore"
+import { collection, doc, setDoc, addDoc, serverTimestamp} from "firebase/firestore"
 import * as Dialog from '@radix-ui/react-dialog'
 import { AddBook } from '../components/AddBook'
 import { ListItem } from '../components/ListItem';
@@ -37,13 +37,18 @@ export default function Home() {
     });
     setList(newList);
 
-    const res = await addDoc(collection(db, "cities"), {
-        name: inputTitle,
-        state: "CA",
-        country: "USA"
+    try{
+    const res = await addDoc(collection(db, "books"), {
+        title: inputTitle,
+        text: inputText,
+        img: "USA",
+        Timestamp: serverTimestamp()
     })
+    }catch(err){
+    console.log(err)
+}
 
-    console.log(res)
+    
   }
 
 
