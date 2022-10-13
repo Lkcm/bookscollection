@@ -1,11 +1,8 @@
-
-
 export const ListItem = (item) => {
 
-  
-
-
-
+let img =item.item.img
+let title = item.item.title
+let text = item.item.text
 
   return (
     <>
@@ -19,10 +16,10 @@ export const ListItem = (item) => {
     hover:scale-100
     ">
       <div className="flex">
-    <li><img className="rounded-3xl drop-shadow-lg "src="http://localhost:3000/silma.jpg"></img></li>
+    <li><img className="rounded-3xl drop-shadow-lg max-w-[400px] h-[500px]"src={img}></img></li>
     <div className="ml-10">
-    <li className="text-3xl mb-4">{item.item.title}</li>
-    <li>{item.item.text}</li>
+    <li className="text-3xl mb-4">{title}</li>
+    <li>{text}</li>
     </div>
     </div>
     </ul>
