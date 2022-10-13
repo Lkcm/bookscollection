@@ -15,6 +15,7 @@ export default function Home() {
   const [ data, setData                ] = useState([]);
   
   useEffect(() => {
+    //pega as informacoes do firebase
     const fetchData = async () =>{
       let list = []
       try{
@@ -32,6 +33,8 @@ export default function Home() {
   },[])
   
   useEffect(() => {
+
+    //upload da imagem no firebase
     const uploadFile = () => {
   
       new Date().getTime() + file.name
@@ -67,18 +70,21 @@ export default function Home() {
     file && uploadFile();
   },[file])
 
+
+  
   const Livro = () => {  
-    
     return (
       data.map((item, index)=>(
         <ListItem key={index} item={item}/>
       ))
     )
+
+
     }
 
     
   const handleAddTask = async() => {
-
+//envia os livros para o firebase
     try{
     const res = await addDoc(collection(db, "books"), {
         title: inputTitle,
@@ -89,10 +95,7 @@ export default function Home() {
     window.location.reload(false)
     }catch(err){
     console.log(err)
-}
-
-    
-  }
+}}
 
 
   return (

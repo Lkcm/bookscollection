@@ -13,13 +13,14 @@ let text = item.item.text
     scale-90
     transition delay-75
     drop-shadow-lg
-    hover:scale-100
+    hover:scale-95
+    cursor-pointer
     ">
       <div className="flex">
     <li><img className="rounded-3xl drop-shadow-lg max-w-[400px] h-[500px]"src={img}></img></li>
     <div className="ml-10">
     <li className="text-3xl mb-4">{title}</li>
-    <li>{text}</li>
+    <li className="text-[20px]">{text}</li>
     </div>
     </div>
     </ul>
